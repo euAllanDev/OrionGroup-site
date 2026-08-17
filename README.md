@@ -39,3 +39,4 @@ Depois acesse `http://localhost:3000`.
 Os arquivos TS/TSX foram verificados com o compilador TypeScript em modo de transpile e retornaram 0 diagnósticos de sintaxe.
 O `npm install` deste ambiente expirou por timeout de rede, portanto o build Next completo deve ser executado localmente após a instalação das dependências.
 # Orion-Group-site-
+# OrionGroup-site
