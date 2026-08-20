@@ -50,15 +50,15 @@ export function ServicesBridge() {
   return (
     <section ref={sectionRef} className="services-bridge services-bridge-v3" id="ecosystem">
       <div ref={textRef} className="bridge-copy">
-        <span>03 / E agora?</span>
-        <h2>E SE A<br />PRÓXIMA IDEIA<br /><em ref={wordRef}>FOR A SUA?</em></h2>
-        <p>Depois de construir nossos próprios produtos, a pergunta natural é: o que podemos construir para o seu negócio?</p>
+        <span>03 / Do nosso produto para o seu negócio</span>
+        <h2>SEU NEGÓCIO<br />PODE SER<br /><em ref={wordRef}>O PRÓXIMO.</em></h2>
+        <p>A mesma capacidade usada para criar nossos produtos agora transforma a necessidade do seu estabelecimento em uma solução própria.</p>
       </div>
 
       <svg className="bridge-motion-path" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
         <path ref={pathRef} id="services-bridge-path" d="M 1700 150 C 1320 120, 1240 400, 1050 400 C 800 400, 930 690, 660 720 C 470 742, 390 650, 290 745" />
       </svg>
-      <div ref={mascotRef} className="bridge-mascot bridge-motion-mascot"><OrionMascot3D compact sleepy /></div>
+      <div ref={mascotRef} className="bridge-mascot bridge-motion-mascot"><OrionMascot3D sectionIndex={4} compact sleepy /></div>
       <div className="bridge-cloud b1" /><div className="bridge-cloud b2" />
       <div className="bridge-spark s1">✦</div><div className="bridge-spark s2">✦</div>
     </section>

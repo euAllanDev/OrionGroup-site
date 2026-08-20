@@ -69,15 +69,15 @@ export function ProjectsIntro() {
       <div className="cloud cloud-1" />
       <div className="cloud cloud-2" />
       <div className="projects-intro-inner">
-        <div ref={labelRef} className="intro-tag">02 / Nossos projetos</div>
-        <h2 ref={titleRef}>Conheça alguns de<br />nossos <span>projetos</span></h2>
-        <p ref={copyRef}>Produtos diferentes, com uma mesma ideia por trás: construir software com intenção.</p>
+        <div ref={labelRef} className="intro-tag">02 / Produtos Orion</div>
+        <h2 ref={titleRef}>Problemas reais.<br /><span>Produtos próprios.</span></h2>
+        <p ref={copyRef}>Antes de criar soluções para outros negócios, começamos construindo as nossas. Cada produto mostra como transformamos uma necessidade em tecnologia.</p>
       </div>
 
       <svg className="pull-path-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
         <path ref={pathRef} d="M 1740 420 C 1420 350, 1320 560, 1120 500 C 900 430, 820 300, 640 365 C 470 425, 510 610, 320 660" />
       </svg>
-      <div ref={mascotRef} className="pull-mascot motion-path-mascot"><OrionMascot3D compact /></div>
+      <div ref={mascotRef} className="pull-mascot motion-path-mascot"><OrionMascot3D sectionIndex={1} compact /></div>
       <div className="intro-spark i1">✦</div>
       <div className="intro-spark i2">✦</div>
       <div className="intro-spark i3">✦</div>

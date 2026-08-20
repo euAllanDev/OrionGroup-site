@@ -32,6 +32,7 @@ export function MotionDirector() {
     const onPointerMove = (event: PointerEvent) => {
       tx = event.clientX / window.innerWidth;
       ty = event.clientY / window.innerHeight;
+      if (!frame) frame = requestAnimationFrame(loop);
     };
 
     const loop = () => {
@@ -39,11 +40,16 @@ export function MotionDirector() {
       y += (ty - y) * 0.075;
       root.style.setProperty("--pointer-x", x.toFixed(4));
       root.style.setProperty("--pointer-y", y.toFixed(4));
-      frame = requestAnimationFrame(loop);
+      if (Math.abs(tx - x) + Math.abs(ty - y) > 0.001) {
+        frame = requestAnimationFrame(loop);
+      } else {
+        x = tx;
+        y = ty;
+        frame = 0;
+      }
     };
 
     window.addEventListener("pointermove", onPointerMove, { passive: true });
-    loop();
 
     return () => {
       cancelAnimationFrame(frame);

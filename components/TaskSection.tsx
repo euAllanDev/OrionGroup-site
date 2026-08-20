@@ -11,10 +11,10 @@ import { MagneticLink } from "./MagneticLink";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const tasks = [
-  ["Finalizar design system", "HOJE", "high"],
-  ["Revisar API contracts", "11:00", "medium"],
-  ["Prototipar novo fluxo", "14:20", "high"],
-  ["Deep work", "16:00", "low"],
+  ["Cliente sem acesso ao painel", "ABERTO", "Urgente"],
+  ["Dúvida sobre faturamento", "11:00", "Média prioridade"],
+  ["Configurar novo usuário", "14:20", "Alta prioridade"],
+  ["Atualização concluída", "16:00", "Resolvido"],
 ];
 
 export function TaskSection() {
@@ -59,21 +59,21 @@ export function TaskSection() {
   return (
     <section ref={sectionRef} className="project-section task-section task-section-v3">
       <div className="task-orb t1" /><div className="task-orb t2" />
-      <div ref={flowRef} className="task-flow-3d" aria-hidden="true"><TaskMotion3D /></div>
+      <div ref={flowRef} className="task-flow-3d" aria-hidden="true"><TaskMotion3D sectionIndex={3} /></div>
       <div className="task-speed-lines" aria-hidden="true"><i /><i /><i /><i /></div>
 
       <div className="project-grid reverse project-grid-motion">
         <motion.div ref={shellRef} className="task-ui-shell interactive" whileHover={{ rotate: 0, scale: 1.012 }} transition={{ type: "spring", stiffness: 230, damping: 24 }}>
-          <div className="task-ui-top"><strong>ORION TASK</strong><span>MON · 17 AUG</span></div>
+          <div className="task-ui-top"><strong>ORION TASK</strong><span>CENTRAL DE SUPORTE</span></div>
           <div className="task-progress"><span style={{ width: "68%" }} /></div>
           <div className="task-columns">
-            <div className="task-sidebar"><b>TODAY</b><span>Inbox <i>6</i></span><span>Upcoming</span><span>Projects</span><span>Labels</span></div>
+            <div className="task-sidebar"><b>ATENDIMENTO</b><span>Novos <i>6</i></span><span>Em andamento</span><span>Clientes</span><span>Relatórios</span></div>
             <div ref={cardsRef} className="task-list">
-              <div className="task-list-title"><div><small>FOCUS</small><strong>Today</strong></div><b>4 tasks</b></div>
+              <div className="task-list-title"><div><small>FILA DA EQUIPE</small><strong>Tickets</strong></div><b>4 chamados</b></div>
               {tasks.map(([name, time, priority], index) => (
                 <motion.div className="task-card" key={name} whileHover={{ x: 8, scale: 1.012 }} transition={{ type: "spring", stiffness: 360, damping: 24 }}>
                   <span className={`task-check ${index === 0 ? "done" : ""}`}>{index === 0 ? "✓" : ""}</span>
-                  <div><b>{name}</b><small>{priority} priority</small></div>
+                  <div><b>{name}</b><small>{priority}</small></div>
                   <time>{time}</time>
                 </motion.div>
               ))}
@@ -82,13 +82,13 @@ export function TaskSection() {
         </motion.div>
 
         <div ref={copyRef} className="project-copy-block task-copy">
-          <div className="project-index"><span>02</span> PRODUCTIVITY</div>
+          <div className="project-index"><span>02</span> EM DESENVOLVIMENTO</div>
           <h2>ORION<br /><span>TASK</span></h2>
-          <h3>Less chaos.<br />More done.</h3>
-          <p>Uma experiência de produtividade focada em transformar bagunça em fluxo — capturar, priorizar, focar e executar.</p>
-          <div className="tag-row"><span>Focus</span><span>Planning</span><span>Workflow</span><span>Productivity</span></div>
+          <h3>Atendimento organizado.<br />Cliente acompanhado.</h3>
+          <p>Um sistema de suporte e gestão de tickets pensado para pequenas empresas acompanharem solicitações, prioridades e clientes em um só lugar.</p>
+          <div className="tag-row"><span>Suporte</span><span>Tickets</span><span>Clientes</span><span>Gestão</span></div>
           <MagneticLink className="project-link" href="https://github.com/euAllanDev/OrionTask" target="_blank" rel="noreferrer">
-            Explorar Orion Task <i>↗</i>
+            Acompanhar o desenvolvimento <i>↗</i>
           </MagneticLink>
         </div>
       </div>

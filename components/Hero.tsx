@@ -35,17 +35,17 @@ export function Hero() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.15, duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
           >
-            ✦ Sistemas que pensam. Produtos que ficam.
+            ✦ Produtos próprios. Soluções para o seu negócio.
           </motion.div>
 
-          <h1 aria-label="We build what should exist">
+          <h1 aria-label="Ideias que viram tecnologia">
             <span className="hero-line-mask">
               <motion.span
                 initial={{ y: "115%", rotate: 2 }}
                 animate={{ y: 0, rotate: 0 }}
                 transition={{ duration: 0.9, delay: 0.22, ease: [0.2, 0.9, 0.2, 1] }}
               >
-                WE BUILD
+                IDEIAS QUE
               </motion.span>
             </span>
             <span className="hero-line-mask">
@@ -55,7 +55,7 @@ export function Hero() {
                 animate={{ y: 0, rotate: 0 }}
                 transition={{ duration: 0.9, delay: 0.31, ease: [0.2, 0.9, 0.2, 1] }}
               >
-                WHAT SHOULD
+                VIRAM
               </motion.span>
             </span>
             <span className="hero-line-mask">
@@ -65,18 +65,18 @@ export function Hero() {
                 animate={{ y: 0, rotate: 0 }}
                 transition={{ duration: 0.9, delay: 0.4, ease: [0.2, 0.9, 0.2, 1] }}
               >
-                EXIST.
+                TECNOLOGIA.
               </motion.span>
             </span>
           </h1>
 
           <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.72, duration: 0.75 }}>
-            O Orion Group transforma ideias em produtos digitais, sistemas inteligentes e experiências que têm personalidade própria.
+            Criamos produtos digitais e desenvolvemos sites e soluções sob medida para pequenos negócios, do visual à tecnologia por trás de cada experiência.
           </motion.p>
 
           <motion.div className="hero-actions" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.84, duration: 0.7 }}>
-            <MagneticLink href="#projects" className="button button-primary">Explorar projetos <span>↘</span></MagneticLink>
-            <MagneticLink href="#services" className="button button-secondary">Ver serviços <span>✦</span></MagneticLink>
+            <MagneticLink href="#projects" className="button button-primary">Conhecer nossos produtos <span>↘</span></MagneticLink>
+            <MagneticLink href="#services" className="button button-secondary">Criar meu site <span>✦</span></MagneticLink>
           </motion.div>
         </motion.div>
 
@@ -89,7 +89,7 @@ export function Hero() {
         >
           <div className="mascot-glow" />
           <motion.div className="mascot-canvas hero-mascot-shell" animate={{ y: [0, -10, 0] }} transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}>
-            <OrionMascot3D />
+            <OrionMascot3D sectionIndex={0} />
           </motion.div>
           <motion.div className="orbit-line orbit-line-1" animate={{ rotate: [-13, 347] }} transition={{ duration: 26, repeat: Infinity, ease: "linear" }} />
           <motion.div className="orbit-line orbit-line-2" animate={{ rotate: [24, -336] }} transition={{ duration: 32, repeat: Infinity, ease: "linear" }} />
@@ -98,7 +98,7 @@ export function Hero() {
       </div>
 
       <motion.div className="scroll-hint" animate={{ y: [0, 7, 0] }} transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}>
-        <span className="scroll-pill"><i /></span> Role para entrar no universo
+        <span className="scroll-pill"><i /></span> Conheça o que já estamos construindo
       </motion.div>
     </section>
   );

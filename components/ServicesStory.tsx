@@ -10,10 +10,10 @@ import { MagneticLink } from "./MagneticLink";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const questions = [
-  "Vocês podem criar um site para a minha barbearia?",
-  "Vocês podem criar um site para a minha pizzaria?",
-  "Vocês podem criar um site para a minha loja de maquiagem?",
-  "Vocês podem criar um site para a minha...?",
+  "Vocês criam um site para a minha barbearia?",
+  "Dá para mostrar a fila em tempo real?",
+  "Meu negócio precisa de algo diferente. Vocês fazem?",
+  "Então não precisa ser só um site?",
 ];
 
 export function ServicesStory() {
@@ -165,10 +165,10 @@ export function ServicesStory() {
       </svg>
 
       <div ref={copyRef} className="services-copy">
-        <div className="services-label">✦ SITES QUE CONECTAM NEGÓCIOS</div>
-        <h2>Criamos sites<br />para o seu <span>negócio.</span></h2>
-        <p>Barbearia, pizzaria, loja de maquiagem e muito mais. O segmento muda. A resposta não.</p>
-        <div className="services-types"><span>✂ Barbearias</span><span>◉ Pizzarias</span><span>✦ Lojas</span><span>+ Muito mais</span></div>
+        <div className="services-label">✦ SITES E SOLUÇÕES PARA PEQUENOS NEGÓCIOS</div>
+        <h2>Mais do que<br />um site <span>genérico.</span></h2>
+        <p>Criamos uma presença digital que apresenta seu negócio com qualidade e, quando a ideia pede mais, desenvolvemos a tecnologia por trás dela.</p>
+        <div className="services-types"><span>Sites comerciais</span><span>Filas em tempo real</span><span>Integrações</span><span>Sob medida</span></div>
         <div ref={stepRef} className="story-step">01 / BARBEARIA</div>
       </div>
 
@@ -194,7 +194,7 @@ export function ServicesStory() {
       <div className="service-float-icon service-float-pizza" aria-hidden="true">🍕</div>
       <div className="service-float-icon service-float-makeup" aria-hidden="true">✦</div>
 
-      <div ref={mascotRef} className="services-mascot"><OrionMascot3D compact /></div>
+      <div ref={mascotRef} className="services-mascot"><OrionMascot3D sectionIndex={5} compact /></div>
 
       <div ref={phoneTiltRef} className="story-phone-shell">
         <div ref={phoneRef} className="story-phone">
@@ -209,7 +209,7 @@ export function ServicesStory() {
                   className={`chat-message answer ${index === 3 ? "answer-final" : ""}`}
                   key={`a-${index}`}
                 >
-                  {index === 3 ? "CLARO QUE SIIIIIM!!!!" : "Claro que sim!!"}<span className="chat-orion">O</span>
+                  {index === 3 ? "EXATAMENTE. VAMOS ALÉM." : "Sim. Vamos entender sua ideia."}<span className="chat-orion">O</span>
                 </div>,
               ])}
             </div>
@@ -221,10 +221,10 @@ export function ServicesStory() {
       <div ref={finaleRef} className="services-finale">
         <div className="finale-rays" aria-hidden="true"><i className="finale-ray" /><i className="finale-ray" /><i className="finale-ray" /><i className="finale-ray" /></div>
         <div ref={finaleInnerRef} className="services-finale-inner">
-          <span>ORION GROUP / WEB STUDIO</span>
-          <h3>CLARO<br /><em>QUE SIM.</em></h3>
-          <p>Não importa se é uma barbearia, pizzaria, loja ou uma ideia que ainda nem tem nome. A gente pode construir uma experiência digital para ela.</p>
-          <MagneticLink className="button button-primary" href="#journey">Quero meu site <b>↗</b></MagneticLink>
+          <span>ORION GROUP / SOLUÇÕES SOB MEDIDA</span>
+          <h3>ALÉM<br /><em>DO SITE.</em></h3>
+          <p>Uma landing page para apresentar seu negócio. Uma fila conectada para melhorar o atendimento. Ou uma solução que ainda só existe na sua cabeça.</p>
+          <MagneticLink className="button button-primary" href="#journey">Quero um site para meu negócio <b>↗</b></MagneticLink>
         </div>
       </div>
     </section>

@@ -139,25 +139,25 @@ export function VaultSection() {
       <div className="vault-enter-rings" aria-hidden="true"><i className="vault-enter-ring" /><i className="vault-enter-ring" /><i className="vault-enter-ring" /></div>
 
       <div ref={introRef} className="vault-cinematic-intro vault-v3-intro">
-        <span>01 / FLAGSHIP PRODUCT</span>
-        <h2>PRIVATE<br /><em>BY DESIGN.</em></h2>
-        <p>Role para destravar — e entrar — no Orion Vault.</p>
+        <span>01 / PRODUTO ORION</span>
+        <h2>PRIVADO<br /><em>POR PRINCÍPIO.</em></h2>
+        <p>Entre em um espaço local-first criado para organizar conhecimento sem abrir mão do controle.</p>
       </div>
 
       <div ref={stepRef} className="vault-step">COFRE / BLOQUEADO</div>
 
       <div className="vault-world-stage">
         <div ref={ringsRef} className="vault-rings vault-rings-full"><i /><i /><i /></div>
-        <div className="vault-3d-shell vault-3d-shell-full"><VaultCore3D progressRef={progressRef} /></div>
+        <div className="vault-3d-shell vault-3d-shell-full"><VaultCore3D progressRef={progressRef} sectionIndex={2} /></div>
       </div>
 
       <div className="vault-graph-caption" aria-hidden="true">NÓ POR NÓ. CONEXÃO POR CONEXÃO.</div>
 
       <div ref={insideCopyRef} className="vault-inside-copy">
-        <div className="vault-inside-index">ORION VAULT / KNOWLEDGE SPACE</div>
+        <div className="vault-inside-index">ORION VAULT / CONHECIMENTO LOCAL-FIRST</div>
         <h2>SUAS INFORMAÇÕES<br /><span>CONECTADAS.</span></h2>
         <div className="constellation-rule" />
-        <p>Guardadas com segurança. Ligadas com contexto. Cada nota deixa de ser uma ilha e passa a fazer parte de algo maior.</p>
+        <p>Notas, relações e contexto permanecem no seu ambiente. A IA pode sugerir; você continua no controle de cada mudança.</p>
       </div>
 
       <div className="vault-node-labels" aria-hidden="true">
@@ -186,10 +186,10 @@ export function VaultSection() {
       <div ref={signoffRef} className="vault-signoff">
         <div>
           <small>ORION VAULT</small>
-          <strong>O que você guarda importa.<br /><span>Como isso se conecta, também.</span></strong>
+          <strong>Seu conhecimento continua seu.<br /><span>Organizado, conectado e sob controle.</span></strong>
         </div>
         <MagneticLink className="vault-signoff-link" href="https://github.com/euAllanDev/Orion-Vault" target="_blank" rel="noreferrer">
-          Explorar projeto <i>↗</i>
+          Conhecer o Orion Vault <i>↗</i>
         </MagneticLink>
       </div>
 

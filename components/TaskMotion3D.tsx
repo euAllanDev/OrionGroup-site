@@ -3,8 +3,8 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { AdaptiveDpr, RoundedBox } from "@react-three/drei";
 import { useMemo, useRef } from "react";
-import { useInView } from "motion/react";
 import * as THREE from "three";
+import { useSectionLoaded } from "./SectionLoadManager";
 
 type Card = { x: number; y: number; z: number; rot: number; scale: number };
 
@@ -57,15 +57,14 @@ function FlowCards() {
   );
 }
 
-export function TaskMotion3D() {
-  const viewRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(viewRef, { margin: "280px" });
+export function TaskMotion3D({ sectionIndex }: { sectionIndex: number }) {
+  const isLoaded = useSectionLoaded(sectionIndex);
 
   return (
-    <div ref={viewRef} className="r3f-fill">
+    <div className="r3f-fill">
       <Canvas
-        frameloop={inView ? "always" : "never"}
-        dpr={[1, 1.5]}
+        frameloop={isLoaded ? "always" : "never"}
+        dpr={[1, 1.3]}
         camera={{ position: [0, 0, 5.2], fov: 42 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       >

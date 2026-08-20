@@ -3,7 +3,7 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 import { OrionMascot3D } from "./OrionMascot3D";
-import { MagneticLink } from "./MagneticLink";
+import { WhatsAppLeadForm } from "./WhatsAppLeadForm";
 
 export function FinalCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -23,21 +23,18 @@ export function FinalCTA() {
       </div>
 
       <motion.div className="final-copy" style={{ y: titleY }}>
-        <span>04 / THE NEXT ORBIT</span>
-        <h2>TEM UMA<br /><em>IDEIA?</em></h2>
-        <p>Vamos construir.</p>
-        <div className="final-actions">
-          <MagneticLink className="button final-button" href="mailto:hello@orion.group">Falar com o Orion <b>↗</b></MagneticLink>
-          <MagneticLink className="final-link" href="https://github.com/euAllanDev" target="_blank" rel="noreferrer">Acompanhar a jornada →</MagneticLink>
-        </div>
+        <span>04 / SEU PROJETO COMEÇA AQUI</span>
+        <h2>VAMOS TIRAR<br /><em>DO PAPEL?</em></h2>
+        <p>Conte o básico. A conversa continua no WhatsApp.</p>
+        <WhatsAppLeadForm />
       </motion.div>
 
       <motion.div className="final-mascot" style={{ y: mascotY, rotate: mascotRotate }} whileHover={{ scale: 1.045, rotate: 2 }}>
-        <OrionMascot3D />
+        <OrionMascot3D sectionIndex={6} />
       </motion.div>
       <motion.div className="final-planet" style={{ scale: planetScale }} />
       <div className="final-orbit-rings" aria-hidden="true"><i /><i /><i /></div>
-      <footer><span>ORION GROUP © 2026</span><span>WE BUILD WHAT SHOULD EXIST.</span></footer>
+      <footer><span>ORION GROUP © 2026</span><span>PRODUTOS PRÓPRIOS. SOLUÇÕES SOB MEDIDA.</span></footer>
     </section>
   );
 }

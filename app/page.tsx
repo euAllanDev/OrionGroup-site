@@ -9,22 +9,25 @@ import { ServicesStory } from "@/components/ServicesStory";
 import { FinalCTA } from "@/components/FinalCTA";
 import { MotionDirector } from "@/components/MotionDirector";
 import { MotionWorld } from "@/components/MotionWorld";
+import { SectionLoadManager } from "@/components/SectionLoadManager";
 
 export default function Home() {
   return (
     <SmoothScroll>
-      <MotionDirector />
-      <MotionWorld />
-      <Header />
-      <main>
-        <Hero />
-        <ProjectsIntro />
-        <VaultSection />
-        <TaskSection />
-        <ServicesBridge />
-        <ServicesStory />
-        <FinalCTA />
-      </main>
+      <SectionLoadManager>
+        <MotionDirector />
+        <MotionWorld />
+        <Header />
+        <main>
+          <Hero />
+          <ProjectsIntro />
+          <VaultSection />
+          <TaskSection />
+          <ServicesBridge />
+          <ServicesStory />
+          <FinalCTA />
+        </main>
+      </SectionLoadManager>
     </SmoothScroll>
   );
 }

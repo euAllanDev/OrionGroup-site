@@ -3,12 +3,16 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { AdaptiveDpr, Float } from "@react-three/drei";
 import { useRef } from "react";
-import { useInView } from "motion/react";
 import * as THREE from "three";
+import { useSectionLoaded } from "./SectionLoadManager";
 
 type MascotProps = {
   compact?: boolean;
   sleepy?: boolean;
+};
+
+type OrionMascot3DProps = MascotProps & {
+  sectionIndex: number;
 };
 
 function MascotMesh({ compact = false, sleepy = false }: MascotProps) {
@@ -62,8 +66,8 @@ function MascotMesh({ compact = false, sleepy = false }: MascotProps) {
   return (
     <Float speed={1.55} rotationIntensity={0.055} floatIntensity={0.45}>
       <group ref={group} scale={scale}>
-        <mesh ref={body} castShadow receiveShadow>
-          <sphereGeometry args={[1.05, 80, 80]} />
+        <mesh ref={body}>
+          <sphereGeometry args={[1.05, 48, 48]} />
           <meshPhysicalMaterial
             color="#2e78ff"
             roughness={0.14}
@@ -76,29 +80,29 @@ function MascotMesh({ compact = false, sleepy = false }: MascotProps) {
         </mesh>
 
         <mesh ref={leftHand} position={[-0.98, -0.18, 0.12]} scale={[0.31, 0.31, 0.31]}>
-          <sphereGeometry args={[1, 48, 48]} />
+          <sphereGeometry args={[1, 28, 28]} />
           <meshPhysicalMaterial color="#3d82ff" roughness={0.18} clearcoat={1} />
         </mesh>
         <mesh ref={rightHand} position={[0.98, -0.18, 0.12]} scale={[0.31, 0.31, 0.31]}>
-          <sphereGeometry args={[1, 48, 48]} />
+          <sphereGeometry args={[1, 28, 28]} />
           <meshPhysicalMaterial color="#3d82ff" roughness={0.18} clearcoat={1} />
         </mesh>
 
         <mesh ref={leftEye} position={[-0.34, 0.14, 0.96]} scale={[0.2, 0.36, 0.1]}>
-          <sphereGeometry args={[1, 42, 42]} />
+          <sphereGeometry args={[1, 28, 28]} />
           <meshStandardMaterial color="#071128" roughness={0.18} />
         </mesh>
         <mesh ref={rightEye} position={[0.34, 0.14, 0.96]} scale={[0.2, 0.36, 0.1]}>
-          <sphereGeometry args={[1, 42, 42]} />
+          <sphereGeometry args={[1, 28, 28]} />
           <meshStandardMaterial color="#071128" roughness={0.18} />
         </mesh>
 
         <mesh position={[-0.39, 0.31, 1.055]} scale={[0.047, 0.085, 0.045]}>
-          <sphereGeometry args={[1, 28, 28]} />
+          <sphereGeometry args={[1, 16, 16]} />
           <meshBasicMaterial color="white" />
         </mesh>
         <mesh position={[0.29, 0.31, 1.055]} scale={[0.047, 0.085, 0.045]}>
-          <sphereGeometry args={[1, 28, 28]} />
+          <sphereGeometry args={[1, 16, 16]} />
           <meshBasicMaterial color="white" />
         </mesh>
       </group>
@@ -106,22 +110,20 @@ function MascotMesh({ compact = false, sleepy = false }: MascotProps) {
   );
 }
 
-export function OrionMascot3D(props: MascotProps) {
-  const viewRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(viewRef, { margin: "280px" });
+export function OrionMascot3D({ sectionIndex, ...props }: OrionMascot3DProps) {
+  const isLoaded = useSectionLoaded(sectionIndex);
 
   return (
-    <div ref={viewRef} className="r3f-fill">
+    <div className="r3f-fill">
       <Canvas
-        frameloop={inView ? "always" : "never"}
-        dpr={[1, 1.6]}
-        shadows
+        frameloop={isLoaded ? "always" : "never"}
+        dpr={[1, 1.3]}
         camera={{ position: [0, 0, 4.4], fov: 42 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       >
         <AdaptiveDpr pixelated />
         <ambientLight intensity={2.2} />
-        <directionalLight position={[3, 5, 5]} intensity={4.3} color="#ffffff" castShadow />
+        <directionalLight position={[3, 5, 5]} intensity={4.3} color="#ffffff" />
         <pointLight position={[-3, 1, 4]} intensity={20} color="#85baff" distance={8} />
         <pointLight position={[3, -2, 3]} intensity={13} color="#9b7cff" distance={7} />
         <MascotMesh {...props} />

@@ -167,7 +167,7 @@ export function MotionWorld() {
   return (
     <div className="motion-world" aria-hidden="true">
       <Canvas
-        dpr={[1, 1.55]}
+        dpr={[1, 1.3]}
         camera={{ position: [0, 0, 5.4], fov: 43 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       >

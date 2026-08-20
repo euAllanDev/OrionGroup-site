@@ -3,11 +3,15 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { AdaptiveDpr, RoundedBox } from "@react-three/drei";
 import { MutableRefObject, useMemo, useRef } from "react";
-import { useInView } from "motion/react";
 import * as THREE from "three";
+import { useSectionLoaded } from "./SectionLoadManager";
 
 type VaultCore3DProps = {
   progressRef: MutableRefObject<number>;
+};
+
+type VaultCanvasProps = VaultCore3DProps & {
+  sectionIndex: number;
 };
 
 const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
@@ -78,6 +82,7 @@ function VaultShell({ progressRef }: VaultCore3DProps) {
   const dial = useRef<THREE.Group>(null);
   const core = useRef<THREE.Group>(null);
   const innerRing = useRef<THREE.Mesh>(null);
+  const fadingMaterials = useRef<THREE.Material[]>([]);
 
   useFrame((state, delta) => {
     const p = progressRef.current;
@@ -109,16 +114,16 @@ function VaultShell({ progressRef }: VaultCore3DProps) {
       root.current.position.y = THREE.MathUtils.damp(root.current.position.y, -0.05 + approach * 0.03, 5.2, delta);
       root.current.position.z = THREE.MathUtils.damp(root.current.position.z, 0, 5.2, delta);
 
-      root.current.traverse((object) => {
-        if (!(object instanceof THREE.Mesh)) return;
-        const material = object.material;
-        const materials = Array.isArray(material) ? material : [material];
-        materials.forEach((mat) => {
-          if (!("opacity" in mat)) return;
-          mat.transparent = true;
-          mat.opacity = 1 - disappear;
-          mat.depthWrite = disappear < 0.35;
+      if (fadingMaterials.current.length === 0) {
+        root.current.traverse((object) => {
+          if (!(object instanceof THREE.Mesh)) return;
+          fadingMaterials.current.push(...(Array.isArray(object.material) ? object.material : [object.material]));
         });
+      }
+      fadingMaterials.current.forEach((material) => {
+        material.transparent = true;
+        material.opacity = 1 - disappear;
+        material.depthWrite = disappear < 0.35;
       });
       root.current.visible = disappear < 0.995;
     }
@@ -377,16 +382,15 @@ function Scene({ progressRef }: VaultCore3DProps) {
   );
 }
 
-export function VaultCore3D({ progressRef }: VaultCore3DProps) {
-  const viewRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(viewRef, { margin: "360px" });
+export function VaultCore3D({ progressRef, sectionIndex }: VaultCanvasProps) {
+  const isLoaded = useSectionLoaded(sectionIndex);
 
   return (
-    <div ref={viewRef} className="r3f-fill">
+    <div className="r3f-fill">
       <Canvas
-        frameloop={inView ? "always" : "never"}
-        dpr={[1, 1.65]}
-        shadows
+        frameloop={isLoaded ? "always" : "never"}
+        dpr={[1, 1.3]}
+        shadows="basic"
         camera={{ position: [0, 0, 6.35], fov: 38 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       >
