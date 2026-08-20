@@ -4,7 +4,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { motion } from "motion/react";
 import { TaskMotion3D } from "./TaskMotion3D";
 import { MagneticLink } from "./MagneticLink";
 
@@ -63,7 +62,7 @@ export function TaskSection() {
       <div className="task-speed-lines" aria-hidden="true"><i /><i /><i /><i /></div>
 
       <div className="project-grid reverse project-grid-motion">
-        <motion.div ref={shellRef} className="task-ui-shell interactive" whileHover={{ rotate: 0, scale: 1.012 }} transition={{ type: "spring", stiffness: 230, damping: 24 }}>
+        <div ref={shellRef} className="task-ui-shell interactive">
           <div className="task-ui-top"><strong>ORION TASK</strong><span>CENTRAL DE SUPORTE</span></div>
           <div className="task-progress"><span style={{ width: "68%" }} /></div>
           <div className="task-columns">
@@ -71,15 +70,15 @@ export function TaskSection() {
             <div ref={cardsRef} className="task-list">
               <div className="task-list-title"><div><small>FILA DA EQUIPE</small><strong>Tickets</strong></div><b>4 chamados</b></div>
               {tasks.map(([name, time, priority], index) => (
-                <motion.div className="task-card" key={name} whileHover={{ x: 8, scale: 1.012 }} transition={{ type: "spring", stiffness: 360, damping: 24 }}>
+                <div className="task-card" key={name}>
                   <span className={`task-check ${index === 0 ? "done" : ""}`}>{index === 0 ? "✓" : ""}</span>
                   <div><b>{name}</b><small>{priority}</small></div>
                   <time>{time}</time>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
 
         <div ref={copyRef} className="project-copy-block task-copy">
           <div className="project-index"><span>02</span> EM DESENVOLVIMENTO</div>

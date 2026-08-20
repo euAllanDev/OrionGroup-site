@@ -2,6 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { AdaptiveDpr } from "@react-three/drei";
+import { useReducedMotion } from "motion/react";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
@@ -164,6 +165,9 @@ function Scene() {
 }
 
 export function MotionWorld() {
+  const shouldReduceMotion = useReducedMotion();
+  if (shouldReduceMotion) return null;
+
   return (
     <div className="motion-world" aria-hidden="true">
       <Canvas

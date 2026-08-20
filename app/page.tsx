@@ -17,8 +17,9 @@ export default function Home() {
       <SectionLoadManager>
         <MotionDirector />
         <MotionWorld />
+        <a className="skip-link" href="#main-content">Pular para o conteúdo</a>
         <Header />
-        <main>
+        <main id="main-content" tabIndex={-1}>
           <Hero />
           <ProjectsIntro />
           <VaultSection />

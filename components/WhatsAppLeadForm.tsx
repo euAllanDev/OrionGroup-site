@@ -30,7 +30,7 @@ export function WhatsAppLeadForm() {
       </label>
       <label>
         <span>Seu negócio</span>
-        <input name="business" type="text" placeholder="Ex.: barbearia, pizzaria, loja" required />
+        <input name="business" type="text" autoComplete="organization" placeholder="Ex.: barbearia, pizzaria, loja" required />
       </label>
       <label className="whatsapp-project-field">
         <span>O que você procura?</span>
@@ -42,7 +42,7 @@ export function WhatsAppLeadForm() {
         </select>
       </label>
       <button type="submit">Quero um site para meu negócio <b>↗</b></button>
-      <small>Você será direcionado ao WhatsApp com a mensagem pronta.</small>
+      <small>O WhatsApp será aberto em uma nova aba com a mensagem pronta.</small>
     </form>
   );
 }

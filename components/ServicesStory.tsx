@@ -53,6 +53,7 @@ export function ServicesStory() {
     return () => {
       stage.removeEventListener("pointermove", move);
       stage.removeEventListener("pointerleave", leave);
+      gsap.killTweensOf(tilt);
     };
   }, []);
 
@@ -194,9 +195,9 @@ export function ServicesStory() {
       <div className="service-float-icon service-float-pizza" aria-hidden="true">🍕</div>
       <div className="service-float-icon service-float-makeup" aria-hidden="true">✦</div>
 
-      <div ref={mascotRef} className="services-mascot"><OrionMascot3D sectionIndex={5} compact /></div>
+      <div ref={mascotRef} className="services-mascot" aria-hidden="true"><OrionMascot3D sectionIndex={5} compact /></div>
 
-      <div ref={phoneTiltRef} className="story-phone-shell">
+      <div ref={phoneTiltRef} className="story-phone-shell" aria-hidden="true">
         <div ref={phoneRef} className="story-phone">
           <div className="phone-notch" />
           <div className="phone-screen">

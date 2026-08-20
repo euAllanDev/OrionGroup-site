@@ -2,6 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { AdaptiveDpr, RoundedBox } from "@react-three/drei";
+import { useReducedMotion } from "motion/react";
 import { MutableRefObject, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useSectionLoaded } from "./SectionLoadManager";
@@ -384,11 +385,12 @@ function Scene({ progressRef }: VaultCore3DProps) {
 
 export function VaultCore3D({ progressRef, sectionIndex }: VaultCanvasProps) {
   const isLoaded = useSectionLoaded(sectionIndex);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="r3f-fill">
+    <div className="r3f-fill" aria-hidden="true">
       <Canvas
-        frameloop={isLoaded ? "always" : "never"}
+        frameloop={isLoaded && !shouldReduceMotion ? "always" : "never"}
         dpr={[1, 1.3]}
         shadows="basic"
         camera={{ position: [0, 0, 6.35], fov: 38 }}

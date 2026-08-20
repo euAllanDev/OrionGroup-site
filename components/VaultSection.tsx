@@ -4,7 +4,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { motion } from "motion/react";
 import { VaultCore3D } from "./VaultCore3D";
 import { MagneticLink } from "./MagneticLink";
 
@@ -170,16 +169,14 @@ export function VaultSection() {
 
       <div ref={featureRef} className="vault-knowledge-grid">
         {knowledge.map(([title, text], index) => (
-          <motion.article
+          <article
             key={title}
             className="vault-knowledge-card interactive"
-            whileHover={{ y: -8, rotate: index === 1 ? 0 : index === 0 ? -1.5 : 1.5, scale: 1.025 }}
-            transition={{ type: "spring", stiffness: 280, damping: 22 }}
           >
             <span>0{index + 1}</span>
             <h3>{title}</h3>
             <p>{text}</p>
-          </motion.article>
+          </article>
         ))}
       </div>
 

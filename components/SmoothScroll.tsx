@@ -4,6 +4,7 @@ import { PropsWithChildren, useEffect } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MotionConfig } from "motion/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,20 +29,23 @@ export function SmoothScroll({ children }: PropsWithChildren) {
 
     const update = (time: number) => lenis.raf(time * 1000);
     const refresh = () => ScrollTrigger.refresh();
+    const refreshFrame = requestAnimationFrame(refresh);
 
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
     window.addEventListener("load", refresh, { once: true });
 
-    requestAnimationFrame(refresh);
+    window.addEventListener("orientationchange", refresh);
 
     return () => {
+      cancelAnimationFrame(refreshFrame);
       window.removeEventListener("load", refresh);
+      window.removeEventListener("orientationchange", refresh);
       gsap.ticker.remove(update);
       lenis.destroy();
     };
   }, []);
 
-  return children;
+  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
 }

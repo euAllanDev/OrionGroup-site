@@ -2,6 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { AdaptiveDpr, Float } from "@react-three/drei";
+import { useReducedMotion } from "motion/react";
 import { useRef } from "react";
 import * as THREE from "three";
 import { useSectionLoaded } from "./SectionLoadManager";
@@ -112,11 +113,12 @@ function MascotMesh({ compact = false, sleepy = false }: MascotProps) {
 
 export function OrionMascot3D({ sectionIndex, ...props }: OrionMascot3DProps) {
   const isLoaded = useSectionLoaded(sectionIndex);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="r3f-fill">
+    <div className="r3f-fill" aria-hidden="true">
       <Canvas
-        frameloop={isLoaded ? "always" : "never"}
+        frameloop={isLoaded && !shouldReduceMotion ? "always" : "never"}
         dpr={[1, 1.3]}
         camera={{ position: [0, 0, 4.4], fov: 42 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
